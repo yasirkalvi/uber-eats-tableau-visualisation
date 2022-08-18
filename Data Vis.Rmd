@@ -1,0 +1,59 @@
+---
+title: "uber eats"
+author: "YKA"
+date: "7/27/2022"
+output: html_document
+---
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+CATEGORY<-c('Indian','Brazillian','Vietnamese','Peruvian','Korean','Hawaiian','Thai','French','Chinese','Russian','Taiwanese','Japanese','Middle Eastern','Pakistani','African','Caribbean','Bakery','Egyptian','Ethiopian','European','Australian','Brazilian','Black-owned','Bubble Tea','Breakfast &amp','Italian','Mexican','Mediterranean','Vegan','Asian','Seafood','American','Breakfast and Brunch','BBQ','Desserts','Fast Food','Drinks','Convenience','Alcohol','Comfort Food','Asian Fusion','Bar Food','Deli','Flowers','Fried Chicken','Greek','German','Coffee & Tea','Coffee &amp','Chicken','Cafe','Traditional American')
+data<-read.csv("/Users/YKA/Downloads/restaurants.csv")
+
+for (c in as.list(strsplit(data[1,6],", "))){
+  if ("Mexican" %in% c){
+    print("hurray")
+    
+  }else{
+    print("why gofd why")
+  }
+}
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+length<-nrow(data)
+print(length)
+for (i in (1:30124)){
+  
+  ca_li=as.list(strsplit(data[i,6],"; "))
+  #print(ca_li)
+  for (j in ca_li){
+    for(k in CATEGORY){
+      if (k %in% j){
+        print(k)
+        
+        data[i,6]=k
+        print(i)
+      }
+        
+    }
+  }
+  
+  }
+
+     
+       
+```
+```{r}
+head(data)
+```
+```{r}
+write.csv(data,"/Users/YKA/Downloads/data_restaurants.csv")
+```
+
